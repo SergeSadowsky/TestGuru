@@ -28,15 +28,15 @@ database = Category.create(title: 'Databases')
 
 # Tests
 
-tests = Test.create([{ title: 'HTML', level: 0, category_id: frontend.id, author_id: User.first(2).pluck(:id).sample },
-                     { title: 'CSS', level: 1, category_id: frontend.id, author_id: User.first(2).pluck(:id).sample },
-                     { title: 'Javascript', level: 4, category_id: frontend.id, author_id: User.first(2).pluck(:id).sample },
-                     { title: 'Ruby', level: 2, category_id: backend.id, author_id: User.first(2).pluck(:id).sample },
-                     { title: 'C#', level: 3, category_id: backend.id, author_id: User.first(2).pluck(:id).sample },
-                     { title: 'Node JS', level: 3, category_id: backend.id, author_id: User.first(2).pluck(:id).sample },
-                     { title: 'PostgreSQL', level: 2, category_id: database.id, author_id: User.first(2).pluck(:id).sample },
-                     { title: 'MS SQL', level: 3, category_id: database.id, author_id: User.first(2).pluck(:id).sample },
-                     { title: 'MongoDB', level: 4, category_id: database.id, author_id: User.first(2).pluck(:id).sample }])
+tests = Test.create([{ title: 'HTML', level: 0, category_id: frontend.id, author_id: users.first(2).pluck(:id).sample },
+                     { title: 'CSS', level: 1, category_id: frontend.id, author_id: users.first(2).pluck(:id).sample },
+                     { title: 'Javascript', level: 4, category_id: frontend.id, author_id: users.first(2).pluck(:id).sample },
+                     { title: 'Ruby', level: 2, category_id: backend.id, author_id: users.first(2).pluck(:id).sample },
+                     { title: 'C#', level: 3, category_id: backend.id, author_id: users.first(2).pluck(:id).sample },
+                     { title: 'Node JS', level: 3, category_id: backend.id, author_id: users.first(2).pluck(:id).sample },
+                     { title: 'PostgreSQL', level: 2, category_id: database.id, author_id: users.first(2).pluck(:id).sample },
+                     { title: 'MS SQL', level: 3, category_id: database.id, author_id: users.first(2).pluck(:id).sample },
+                     { title: 'MongoDB', level: 4, category_id: database.id, author_id: users.first(2).pluck(:id).sample }])
 
 # Questions and Answers (10 questions with 4 answers and the only correct)
 tests.each do |t|
