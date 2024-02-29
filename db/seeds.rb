@@ -21,13 +21,11 @@ users = User.create([{ first_name: 'Jack', last_name: 'Sparrow', email: 'Jack.Sp
                      { first_name: 'Elizabeth', last_name: 'Swann', email: 'Elizabeth.Swann@carribean.sea'}])
 
 # Categories
-
 frontend = Category.create(title: 'Frontend')
 backend = Category.create(title: 'Backend')
 database = Category.create(title: 'Databases')
 
 # Tests
-
 tests = Test.create([{ title: 'HTML', level: 0, category_id: frontend.id, author_id: users.first(2).pluck(:id).sample },
                      { title: 'CSS', level: 1, category_id: frontend.id, author_id: users.first(2).pluck(:id).sample },
                      { title: 'Javascript', level: 4, category_id: frontend.id, author_id: users.first(2).pluck(:id).sample },

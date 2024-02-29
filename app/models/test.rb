@@ -19,7 +19,6 @@ class Test < ApplicationRecord
   scope :select_by_category, ->(category) { joins(:category).where(categories: { title: category }) }
 
   def self.by_category(category)
-    # Category.find_by(title: category).tests.order(title: :desc).pluck(:title)
     select_by_category(category).pluck(:title)
   end
 
