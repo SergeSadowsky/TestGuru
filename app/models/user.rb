@@ -8,9 +8,12 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  scope :tests_by_level, -> (level) { tests.where(level: level) }
-
   # def tests_by_level(level)
   #   tests.where(level: level)
   # end
+  def tests_by_level(level)
+    # tests.where(level: level)
+    tests.level(level)
+  end
+
 end

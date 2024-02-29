@@ -5,7 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version 3.0.2
+* Ruby version 3.0.6
 
 * Rails version 6.1.7.6
 
@@ -26,9 +26,9 @@ Things you may want to cover:
 
 #### Entities of project:
 * User
+* Category
 * Test
 * Question
 * Answer
-* Result
-* User
+* TestAttempt
 

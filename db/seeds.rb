@@ -35,7 +35,7 @@ tests = Test.create([{ title: 'HTML', level: 0, category_id: frontend.id, author
                      { title: 'C#', level: 3, category_id: backend.id, author_id: users.first(2).pluck(:id).sample },
                      { title: 'Node JS', level: 3, category_id: backend.id, author_id: users.first(2).pluck(:id).sample },
                      { title: 'PostgreSQL', level: 2, category_id: database.id, author_id: users.first(2).pluck(:id).sample },
-                     { title: 'MS SQL', level: 3, category_id: database.id, author_id: users.first(2).pluck(:id).sample },
+                     { title: 'MS SQL', level: 5, category_id: database.id, author_id: users.first(2).pluck(:id).sample },
                      { title: 'MongoDB', level: 4, category_id: database.id, author_id: users.first(2).pluck(:id).sample }])
 
 # Questions and Answers (10 questions with 4 answers and the only correct)
