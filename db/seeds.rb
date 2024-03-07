@@ -39,7 +39,7 @@ tests = Test.create([{ title: 'HTML', level: 0, category_id: frontend.id, author
 # Questions and Answers (10 questions with 4 answers and the only correct)
 tests.each do |t|
   10.times do | i |
-    q = Question.create( body: "Question # #{i+1}", test_id: t.id)
+    q = Question.create( body: "Question # #{i+1}_t#{t.id}", test_id: t.id)
     has_correct = false
     4.times do |j|
       correct = false
