@@ -1,0 +1,8 @@
+<%= question_header(@question) %>
+<%= render "form", question: @question %>
+
+<br/>
+
+<div>
+  <%= link_to "Back to questions", test_questions_path(@question.test) %>
+</div>

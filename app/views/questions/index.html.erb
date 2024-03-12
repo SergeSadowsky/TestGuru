@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<h2><%= @test.title %> <small>Level: <%= @test.level %></small></h2>
+<p>
+  <%= link_to "New question", new_test_question_path(@test)  %>
+</p>
+
+<table>
+  <tr>
+    <th>Question</th>
+    <th>Actions</th>
+  </tr>
+  <%= render @questions %>
+</table>
+<br/>
+<div>
+  <%= link_to "Back to tests", tests_path %>
+</div>
+

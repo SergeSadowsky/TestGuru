@@ -1,33 +1,41 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: [:index, :create]
-  before_action :find_question, only: [:show, :destroy]
+  before_action :find_test, only: [:index, :new, :create]
+  before_action :find_question, only: [:show, :edit, :update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
   def index
-    result = @test.questions.pluck(:body)
-    render html: output(result).html_safe
+    @questions = @test.questions
   end
 
-  def show
-    render plain: @question.body
+  def show; end
+
+  def new
+    @question = @test.questions.new
   end
 
-  def new; end
+  def edit; end
 
   def create
     question = @test.questions.new(question_params)
-    result = if question.save
-               ["Question.id: #{question.id}", "Question.body: #{question.body}", "Question for Test: #{question.test_id}"]
-             else
-               ['Error:', "Can't create question", question.errors.full_message]
-             end
-    render html: output(result).html_safe
+    if question.save
+      redirect_to test_questions_url(@test), notice: 'Question was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to question_url(@question), notice: 'Question was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @question.destroy
+    @question.destroy!
 
-    render plain: "Question #{@question.id} deleted"
+    redirect_to test_questions_url(@question.test), notice: 'Question was successfully destroyed.'
   end
 
   private
@@ -48,7 +56,4 @@ class QuestionsController < ApplicationController
     render plain: 'Question not found'
   end
 
-  def output text
-    "<ul><li>#{text.join('</li><li>')}</li></ul>"
-  end
 end
