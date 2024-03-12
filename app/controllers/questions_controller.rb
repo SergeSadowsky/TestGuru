@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question.destroy!
+    @question.destroy
 
     redirect_to test_questions_url(@question.test), notice: 'Question was successfully destroyed.'
   end
@@ -53,7 +53,7 @@ class QuestionsController < ApplicationController
   end
 
   def rescue_with_question_not_found
-    render plain: 'Question not found'
+    redirect_to tests_url, notice: 'Question not found.'
   end
 
 end
