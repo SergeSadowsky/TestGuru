@@ -1,0 +1,17 @@
+<%= question_header(@question) %>
+
+<%= form_with model: [@test, @question] do |form| %>
+<%= render 'shared/errors', resource: @question %>
+
+  <div style="margin: 10px;">
+    <%= form.label :body, style: "display: block;" %>
+    <%= form.text_area :body, style: "min-width:300px;" %>
+  </div>
+
+  <div style="margin: 10px;">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+<br/>

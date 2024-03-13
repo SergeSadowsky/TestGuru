@@ -1,39 +1,4 @@
-<script>
-    const range = document.createRange()
-    const frag = range.createContextualFragment(`
-<style>
-    form.form-example {
-        display: table;
-    }
-
-    div.form-example {
-        display: table-row;
-    }
-
-    label,
-    input {
-        display: table-cell;
-        margin-bottom: 10px;
-    }
-
-    label {
-        padding-right: 10px;
-    }
-</style>
-      `)
-    document.querySelector("head").append(frag)
-</script>
-
-<h3>Create New Question</h3>
-
-<form action="/tests/<%= params[:test_id] %>/questions" method="post" class="form-example">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  <div class="form-example">
-    <label for="question-body">Question body: </label>
-    <input type="text" name="question[body]" id="question-body" required />
-  </div>
-  <div class="form-example">
-    <input type="submit" value="Create" />
-  </div>
-</form>
-
+<%= render 'form' %>
+<div>
+  <%= link_to 'Back to questions', test_path(@question.test) %>
+</div>

@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+<p style="color: red"><%= alert %></p>
+
+<h1>Tests list</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Level</th>
+    <th>Questions qty.</th>
+    <th>Actions</th>
+  </tr>
+  <%= render @tests %>
+</table>
+<p>
+  Total tests: <%= @tests.count %>
+</p>
+
