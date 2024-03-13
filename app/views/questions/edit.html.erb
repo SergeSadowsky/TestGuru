@@ -1,6 +1,6 @@
 <%= render "form", question: @question %>
 <div>
-  <%= link_to "Back to questions", test_questions_path(@question.test) %> |
+  <%= link_to "Back to questions", test_path(@question.test) %> |
   <%= link_to 'Delete', question_path(@question),
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
