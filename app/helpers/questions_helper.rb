@@ -8,6 +8,6 @@ module QuestionsHelper
              else
                "Edit question for #{test_title} test"
              end
-    content_tag 'h3', header
+    content_tag 'h2', header
   end
 end
