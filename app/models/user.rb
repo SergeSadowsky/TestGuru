@@ -12,4 +12,8 @@ class User < ApplicationRecord
     tests.level(level)
   end
 
+  def test_attempt(test)
+    test_attempts.order(id: :desc).find_by(test_id: test.id)
+  end
+
 end
