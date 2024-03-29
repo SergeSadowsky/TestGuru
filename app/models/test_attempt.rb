@@ -3,15 +3,15 @@ class TestAttempt < ApplicationRecord
   belongs_to :test
 
   belongs_to :current_question, class_name: 'Question', optional: true
-
-  before_validation :before_validation_set_first_question, on: :create
-  before_validation :before_validation_set_next_question, on: :update
+  
+  before_validation :before_validation_set_current_question, on: %i[create update]
 
   SUCCESS_SCORE = 85
 
   def completed?
     current_question.nil?
   end
+
   def accept!(answer_ids)
     if correct_answer?(answer_ids)
       self.correct_questions += 1
@@ -28,6 +28,10 @@ class TestAttempt < ApplicationRecord
     correct_questions / test.questions.count.to_f * 100
   end
 
+  def current_question_index
+    test.questions.count - remaining_questions.count
+  end
+
   private
 
   def correct_answer?(answer_ids)
@@ -38,15 +42,13 @@ class TestAttempt < ApplicationRecord
     current_question.answers.correct
   end
 
-  def next_question
-    test.questions.order(:id).where('id > ?', current_question.id).first
+  def before_validation_set_current_question
+    self.current_question = remaining_questions.first if test.present?
   end
 
-  def before_validation_set_first_question
-    self.current_question = test.questions.first if test.present?
-  end
-
-  def before_validation_set_next_question
-    self.current_question = next_question
+  def remaining_questions
+    current_question_id = current_question&.id || 0
+    puts current_question_id
+    test.questions.order(:id).where('id > ?', current_question_id)
   end
 end

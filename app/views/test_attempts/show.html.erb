@@ -1,19 +1,28 @@
 <h1>Passing the <%= @test_attempt.test.title %> Test</h1>
 
-<b>
-  <%= @test_attempt.current_question.body %>
-</b>
-
-<%= form_with url: test_attempt_path(@test_attempt), local: true, method: :put do |form| %>
-  <%= form.collection_check_boxes :answer_ids, @test_attempt.current_question.answers, :id, :body, include_hidden: false do |b| %>
+<% if @test_attempt.current_question.nil? %>
+  <p>
+    Sorry! There are no questions for this test yet. <br>
+  </p>
     <p>
-      <%= b.check_box id: "answer_ids_#{b.object.id}" %>
-      <%= b.label %>
-      <% if Rails.env.development? %>
-      <i>(<%= b.object.correct %>)</i>
-      <% end %>
+      <%= link_to "Back to tests", tests_path %>
     </p>
-  <% end %>
+<% else %>
+  <b>
+    <%= @test_attempt.current_question.body %> <%= current_of_total(@test_attempt) %>
+  </b>
 
-  <p><%= form.submit 'Next' %></p>
+  <%= form_with url: test_attempt_path(@test_attempt), local: true, method: :put do |form| %>
+    <%= form.collection_check_boxes :answer_ids, @test_attempt.current_question.answers, :id, :body, include_hidden: false do |b| %>
+      <p>
+        <%= b.check_box id: "answer_ids_#{b.object.id}" %>
+        <%= b.label %>
+        <% if Rails.env.development? %>
+          <i>(<%= b.object.correct %>)</i>
+        <% end %>
+      </p>
+    <% end %>
+
+    <p><%= form.submit 'Next' %></p>
+  <% end %>
 <% end %>
