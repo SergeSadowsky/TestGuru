@@ -7,6 +7,8 @@ class TestAttempt < ApplicationRecord
   before_validation :before_validation_set_first_question, on: :create
   before_validation :before_validation_set_next_question, on: :update
 
+  SUCCESS_SCORE = 85
+
   def completed?
     current_question.nil?
   end
@@ -16,6 +18,14 @@ class TestAttempt < ApplicationRecord
     end
 
     save!
+  end
+
+  def success?
+    test_score >= SUCCESS_SCORE
+  end
+
+  def test_score
+    correct_questions / test.questions.count.to_f * 100
   end
 
   private
