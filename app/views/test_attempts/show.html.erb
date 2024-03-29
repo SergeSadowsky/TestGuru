@@ -4,9 +4,9 @@
   <p>
     Sorry! There are no questions for this test yet. <br>
   </p>
-    <p>
-      <%= link_to "Back to tests", tests_path %>
-    </p>
+  <p>
+    <%= link_to "Back to tests", tests_path %>
+  </p>
 <% else %>
   <b>
     <%= @test_attempt.current_question.body %> <%= current_of_total(@test_attempt) %>
