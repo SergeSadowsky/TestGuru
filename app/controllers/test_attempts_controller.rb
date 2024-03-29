@@ -3,11 +3,9 @@ class TestAttemptsController < ApplicationController
 
   def show
 
-
   end
 
   def result
-
 
   end
 
@@ -19,8 +17,6 @@ class TestAttemptsController < ApplicationController
     else
       render :show
     end
-
-
   end
 
   private
