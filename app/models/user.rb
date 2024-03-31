@@ -2,7 +2,7 @@ require 'digest/sha1'
 
 class User < ApplicationRecord
 
-  # include Auth
+  VALID_EMAIL_PATTERN = /\A\w+@\w+\.\w+\z/
 
   has_many :test_attempts
   has_many :tests, through: :test_attempts
